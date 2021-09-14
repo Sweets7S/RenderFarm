@@ -2,10 +2,9 @@ package com.task.render.controllers;
 
 import com.task.render.entity.Task;
 import com.task.render.service.TaskService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 // Sweets
 @RestController
@@ -21,5 +20,10 @@ public class TaskController {
     @PostMapping
     public Task create(@RequestBody Task task){
         return taskService.create(task);
+    }
+
+    @GetMapping
+    public List<Task> getAll(){
+        return taskService.getAll();
     }
 }
