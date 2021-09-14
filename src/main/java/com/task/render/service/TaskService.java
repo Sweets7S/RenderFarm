@@ -15,6 +15,7 @@ public class TaskService {
     }
 
     public Task create(Task task) {
+        task.setStatus("RENDERING");
         return taskRepo.save(task);
     }
 }
