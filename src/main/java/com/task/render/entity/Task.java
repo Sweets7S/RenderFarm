@@ -1,15 +1,22 @@
 package com.task.render.entity;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 // Sweets
 @Entity
 @Table(name = "tasks")
 public class Task {
 
+    public static final int START_SEQ = 1000;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = START_SEQ)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
     private int id;
+
+    @Column(name = "task_id")
+    private int taskId;
 
     @Column(name = "user_id")
     private int userId;
@@ -19,6 +26,25 @@ public class Task {
 
     @Column(name = "status")
     private String status;
+
+    @Column(name = "date_time")
+    private LocalDateTime dateTime;
+
+    public int getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(int taskId) {
+        this.taskId = taskId;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
 
     public int getId() {
         return id;
