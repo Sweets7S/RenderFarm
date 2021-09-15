@@ -45,4 +45,8 @@ public class TaskService {
         }
         return false;
     }
+
+    public List<Task> getAllByUser(int userId) {
+        return taskRepo.findAllByUserId(userId);
+    }
 }

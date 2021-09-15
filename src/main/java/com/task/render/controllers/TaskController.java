@@ -26,4 +26,9 @@ public class TaskController {
     public List<Task> getAll(){
         return taskService.getAll();
     }
+
+    @GetMapping("/{userId}")
+    public List<Task> getAllByUser(@PathVariable("userId") int userId){
+        return taskService.getAllByUser(userId);
+    }
 }
